@@ -22,7 +22,8 @@ def init():
 
     @app.route('/random')
     def random_pic():
-        return {'picture': os.path.join(random.choice(os.listdir(pictures)))}
+        return {'picture':
+                os.path.join(random.choice(os.listdir(pictures)))}
 
     @app.route('/solution/<string:picture>')
     def solve(picture):
