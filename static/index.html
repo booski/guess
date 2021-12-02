@@ -1,0 +1,53 @@
+<html lang=en>
+  <head>
+    <title>Guess a thing!</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: min(6.5vh, 24pt);
+          font-family: sans-serif;
+          color: white;
+          background-color: #050505;
+      }
+      #question {
+          max-height: 100%;
+      }
+      #overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(20,20,20, 0.7);
+      }
+      .fade {
+          visibility: visible;
+          opacity: 1;
+          transition: visibility 0s linear, opacity 0.5s linear;
+      }
+      .hidden {
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+      }
+    </style>
+    <script type="text/JavaScript" src="/script.js"></script>
+  </head>
+  <body>
+    <img id="question"/>
+    <div id="overlay" class="fade hidden">
+      <span id="answer"></span>
+    </div>                       
+  </body>
+</html>
