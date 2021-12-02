@@ -7,9 +7,10 @@ A web application where you guess at pictures.
 Clone the repo and run the following in the base directory (assuming your
 web server runs under the `www-data` user):
 
-```sh
+```bash
 mkdir answers static/pictures
 sudo chgrp www-data answers static/pictures
+chmod g+w answers static/pictures
 python3 -m venv venv
 . venv/bin/activate
 pip3 install -r requirements.txt
