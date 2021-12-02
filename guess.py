@@ -26,7 +26,7 @@ def init():
 
     @app.route('/solution/<string:picture>')
     def solve(picture):
-        with open(os.path.join(answers, picture)) as f:
+        with open(os.path.join(answers, picture), encoding='UTF-8') as f:
             return {'solution': f.read()}
 
     @app.route('/upload', methods=['POST'])
@@ -47,7 +47,8 @@ def init():
         
         filename = secure_filename(picture.filename)
         picture.save(os.path.join(pictures, filename))
-        with open(os.path.join(answers, filename), 'w') as f:
+        with open(os.path.join(answers, filename),
+                  'w', encoding='UTF-8') as f:
             f.write(answer+"\n")
         return redirect(request.referrer)
         
