@@ -21,16 +21,33 @@
       a {
           color: #dddddd;
       }
+      img {
+          max-height: 75vh;
+          max-width: 100wv;
+      }
     </style>
+    <script>
+      function loadFile(event) {
+          var output = document.getElementById('output');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.onload = function() {
+              URL.revokeObjectURL(output.src) // free memory
+          }
+      };
+    </script>
   </head>
   <body>
+    <img id="output" />
     <form enctype="multipart/form-data"
           method="post"
           action="/app/upload">
       <input type="text"
              name="answer"
              placeholder="Put the answer here..." />
-      <input name="picture" type="file" />
+      <input name="picture"
+             type="file"
+             accept="image/*"
+             onchange="loadFile(event)"/>
       <input type="submit" value="Upload" />
     </form>
     <a href="/index.html">Go back to guessing</a>
