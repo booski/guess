@@ -12,7 +12,6 @@ def allowed_file(name):
 
 def init():
     app = Flask(__name__)
-    app.secret_key = 'sMJCHS4T7Tau_2wWBKARgg'
     pictures = os.path.join(app.root_path, 'static/pictures')
     answers = os.path.join(app.root_path, 'answers')
     
@@ -50,7 +49,6 @@ def init():
         picture.save(os.path.join(pictures, filename))
         with open(os.path.join(answers, filename), 'w') as f:
             f.write(answer+"\n")
-        flash('Success!')
         return redirect(request.referrer)
         
     return app
