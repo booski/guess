@@ -4,6 +4,9 @@ A web application where you guess at pictures.
 
 ## Setup
 
+Clone the repo and run the following in the base directory (assuming your
+web server runs under the `www-data` user):
+
 ```sh
 mkdir answers static/pictures
 sudo chgrp www-data answers static/pictures
@@ -13,10 +16,8 @@ pip3 install -r requirements.txt
 deactivate
 ```
 
-The above assumes that your web server runs under the user `www-data`.
-
-You will also need to configure your web server. An apache example server 
-config is provided, it requires `mod_wsgi`.
+You will also need to configure your web server to serve the app. An 
+apache example server config is provided, it requires `mod_wsgi`.
  
 ## Design
  
