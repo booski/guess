@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import random
+import uuid
 
 from flask import Flask, Response, flash, redirect, request
 from werkzeug.utils import secure_filename
@@ -44,8 +45,10 @@ def init():
         answer = request.form['answer']
         if not answer:
             return Response(response='No answer provided')
-        
-        filename = secure_filename(picture.filename)
+
+        filename = str(uuid.uuid4())
+        while filename in os.listdir(pictures):
+            filename = str(uuid.uuid4())
         picture.save(os.path.join(pictures, filename))
         with open(os.path.join(answers, filename),
                   'w', encoding='UTF-8') as f:
