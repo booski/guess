@@ -7,6 +7,7 @@ from flask import Flask, Response, flash, redirect, request
 from werkzeug.utils import secure_filename
 
 PERMITTED = {'jpg', 'png', 'gif'}
+history_array = []
 
 def allowed_file(name):
     return '.' in name and name.rsplit('.', 1)[1].lower() in PERMITTED
@@ -22,8 +23,13 @@ def init():
 
     @app.route('/random')
     def random_pic():
-        return {'picture':
-                os.path.join(random.choice(os.listdir(pictures)))}
+        picked_picture_path = os.path.join(random.choice(os.listdir(pictures)))
+        if len(history_array) > 50:
+            del history_array[0]
+        if picked_picture_path not in history_array:
+            history_array.append(picked_picture_path)
+            return {'picture': picked_picture_path}
+        random_pic()
 
     @app.route('/solution/<string:picture>')
     def solve(picture):
