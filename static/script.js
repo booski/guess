@@ -35,8 +35,10 @@
                 if (historyArray.includes(q.dataset.src)) {
                     getNext()
                     }
-                historyArray.push(q.dataset.src)
-                q.src = '/pictures/' + q.dataset.src
+                else {
+                    historyArray.push(q.dataset.src)
+                    q.src = '/pictures/' + q.dataset.src
+                }
             })
         }
 
