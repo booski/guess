@@ -30,7 +30,7 @@
             ajax('./app/random', function(json_result) {
                 q.dataset.src = json_result.picture
                 if (historyArray.length > 50) {
-                    historyArray = historyArray.shift()
+                    historyArray.shift()
                 }
                 if (historyArray.includes(q.dataset.src)) {
                     getNext()
